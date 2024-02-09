@@ -1,0 +1,76 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <!-- Content for the first column -->
+    </div>
+    <div class="col-md-4">
+      <!-- Content for the second column -->
+      <div>
+        <h1>Driven Form</h1>
+        {{user | json}}
+        <form #myForm="ngForm">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" name="name" pattern="[A-Za-z ']{2,40}" [(ngModel)]="user.name" #nom="ngModel" required>
+            <div *ngIf="nom.invalid &&(nom.touched || nom.dirty)" class="alert alert-danger">
+              <div *ngIf="nom.errors?.['required']">
+                Name is required.
+              </div>
+              <div *ngIf="nom.errors?.['pattern']">
+                Name must contain only letters and spaces.
+              </div>
+              </div>    
+            </div>
+            <div class="form-group">
+                <label for="name">First Name</label>
+                <input type="text" class="form-control" name="firstname" pattern="[A-Za-z ']{2,40}" [(ngModel)]="user.firstname" #prenom="ngModel" required>
+                <div *ngIf="prenom.invalid && (prenom.touched || prenom.dirty)" class="alert alert-danger">
+                  <div *ngIf="prenom.errors?.['required']">
+                    First name is required.
+                  </div>
+                    <div *ngIf="prenom.errors?.['pattern']">
+                        First name must contain only letters and spaces.
+                        </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" name="email" [(ngModel)]="user.email" #email="ngModel" required>
+                    <div *ngIf="email.invalid && (email.touched || email.dirty)" class="alert alert-danger">
+                      <div *ngIf="email.errors?.['required']">
+                        Email is required.
+                      </div>
+                      <div *ngIf="email.errors?.['email']">
+                        Email must be a valid email address.
+                      
+                    </div>
+                    </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" name="password" [(ngModel)]="user.password" #password="ngModel" required>
+                        <div *ngIf="password.invalid && (password.touched || password.dirty)" class="alert alert-danger">
+                          <div *ngIf="password.errors?.['required']">
+                            Password is required.
+                          </div>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Confirm Password</label>
+                            <input type="password" class="form-control" name="confirmPassword" [(ngModel)]="confirm" #confirmPassword="ngModel" required>
+                            <div *ngIf="confirmPassword.invalid && (confirmPassword.touched || confirmPassword.dirty)" class="alert alert-danger">
+                              <div *ngIf="confirmPassword.errors?.['required']">
+                                Confirm Password is required.
+                              </div>
+                              </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary" [disabled]="myForm.invalid || user.password!=confirm">Submit</button>
+            </form>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <!-- Content for the third column -->
+    </div>
+  </div>
+</div>
+
