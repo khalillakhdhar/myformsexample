@@ -1,0 +1,88 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <!-- Content for the first row -->
+        </div>
+        <div class="col">
+            <!-- Content for the second row -->
+            <form #myForm="ngForm">
+                <div class="form-group">
+                    <label for="name">Nom</label>
+                    <input type="text" class="form-control" name="name" pattern="[A-Za-z ']{2,40}" [(ngModel)]="nom" #name="ngModel" required>
+                    <div *ngIf="name.invalid &&(name.touched || name.dirty)" class="alert alert-danger">
+                        <div *ngIf="name.errors?.['required']">
+nom obligatoire                        </div>
+                        <div *ngIf="name.errors?.['pattern']">
+               le nom doit contenir que des lettres et des espaces.          
+                        </div>
+                    </div>
+            <div>
+
+                
+         </div>
+         <div class="col">
+
+         </div>       
+    </div>
+    <div class="form-group">
+        <label for="name">Email</label>
+        <input type="text" class="form-control" name="email"  [(ngModel)]="email" #mail="ngModel" required>
+        <div *ngIf="mail.invalid &&(mail.touched || mail.dirty)" class="alert alert-danger">
+            <div *ngIf="name.errors?.['required']">
+                Email obligatoire                        </div>
+            <div *ngIf="name.errors?.['email']">
+   le mail doit etre valide.
+            </div>
+        </div>
+<div>
+</div>
+</div>    
+<div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" class="form-control" name="password" [(ngModel)]="password" #pass="ngModel" required>
+    <div *ngIf="pass.invalid && (pass.touched || pass.dirty)" class="alert alert-danger">
+      <div *ngIf="pass.errors?.['required']">
+        Password requis.
+      </div>
+      </div>
+    </div>
+    <div class="form-group">
+        <label for="password">Confirmation</label>
+        <input type="password" class="form-control" name="confirmPassword" [(ngModel)]="confirmation" #confirmPassword="ngModel" required>
+        <div *ngIf="confirmPassword.invalid && (confirmPassword.touched || confirmPassword.dirty)" class="alert alert-danger">
+          <div *ngIf="confirmPassword.errors?.['required']">
+            Confirm Password is required.
+          </div>
+          </div>
+        </div>
+        <div class="form-group">
+            <label>age</label>
+            <input type="number" class="form-control" name="age" [(ngModel)]="age" min="10" max="50" #ages="ngModel" required>
+            <div *ngIf="ages.invalid && (ages.touched || ages.dirty)" class="alert alert-danger">
+              <div *ngIf="ages.errors?.['required']">
+                age is required.
+              </div>
+              <div *ngIf="ages.errors?.['min']">
+                age must be greater than 10.
+              </div>
+              <div *ngIf="ages.errors?.['max']">
+                age must be less than 50.
+              </div>
+              </div>
+
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="myForm.invalid">Submit</button>
+</form>
+<div class="col">
+
+</div>       
+
+
+
+
+</div>
+<div class="col">
+    <!-- Content for the first row -->
+</div>
+</div>
+  
